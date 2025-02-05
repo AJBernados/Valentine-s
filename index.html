@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Valentine's day!</title>
+</head>
+<body>
+  <div id="content">
+    <img id="jepoy" src="gifs\jam.gif" alt="jepoy dancing">
+    <h1>Will you be my Valentine?</h1>
+    <div class="buttons">
+      <button class="yes-button" id="yes-button">Yes</button>
+      <button class="no-button" id="no-button">No</button>
+    </div>
+  </div>
+  <div id="success-message" class="hidden">
+    <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="bearkisss">
+    <h1>YEAAAAAAAAAAAAAAA!! I love you sooooo muuuuch HABIBIBIBIBIBI!!! ;))</h1>
+  </div>
+
+  <script>
+    const yesButton = document.getElementById("yes-button");
+    const noButton = document.getElementById("no-button");
+    const successMessage = document.getElementById("success-message");
+    const content = document.getElementById("content");
+
+    const noPhrases = [
+      "No",
+      "Are you sure?",
+      "What if I asked really nicely?",
+      "Pretty pleaseeeeeeeeeeee",
+      "With a strawberry cake on toooop?",
+      "What about matcha icecream?",
+      "Vanilla?",
+      "PLEASE HABIBIIII",
+      "But :*(",
+      "I am going to die",
+      "Yeah im dead",
+      "ok ur talking to Jap's ghost",
+      "please habibi",
+      ":((((",
+      "PRETTY PLEASE",
+      "MYYY HEARTTT VERYYYY SAKIIIT",
+      "No :("
+    ];
+
+    let noCount = 0;
+
+    const getNoButtonText = () => {
+      return noPhrases[Math.min(noCount, noPhrases.length - 1)];
+    };
+
+    const updateYesButtonSize = () => {
+      const newSize = 1.5 + noCount * 5; // Increase size of the yes button
+      yesButton.style.fontSize = `${newSize}rem`; 
+    };
+
+    noButton.addEventListener("click", () => {
+      noCount++;
+      noButton.textContent = getNoButtonText();
+      updateYesButtonSize();
+
+      // Hide no button if yes button gets too large
+      if (yesButton.offsetWidth > window.innerWidth) {
+        noButton.style.display = 'none';
+      }
+    });
+
+    yesButton.addEventListener("click", () => {
+      content.classList.add("hidden");
+      successMessage.classList.remove("hidden");
+    });
+  </script>
+</body>
+</html>
