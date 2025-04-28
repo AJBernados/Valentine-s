@@ -1,2 +1,4 @@
-# Valentine-s
-A website I'll be showing her on Valentine's
+# Valentines
+A simple website for Valentines
+
+(You know it's for you)
